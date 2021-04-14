@@ -1,0 +1,166 @@
+<div id="content" class="col-lg-10 col-sm-11"> 
+    <div class="row">
+        <div class="col-sm-6" *ngIf="encounter">
+            <div class="box">
+              <div class="box-header">
+                <h2><i class="fas fa fa-user"></i>&nbsp;Patient Information</h2>
+              </div>
+              <div class="box-content">
+                <form role="form" (ngSubmit)="updateEncounterBasic(patientEncounterForm.value)" #patientEncounterForm="ngForm">
+                <div id="generalInfo" style="height:450px" >
+                    <table class="table table-condensed">
+                        <tbody>
+                            <tr>
+                                <th>Name:</th>
+                                <td> 
+                                  <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input  name="fullname" [ngModel]="fullname" class="form-control"  type="text"  disabled="">
+                                  </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Date of Birth:</th>
+                                <td>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                        <input  name="dob" [ngModel]="dob" class="form-control"  type="text" disabled="">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Room Number:</th>
+                                <td>
+                                  <div class="input-group">
+                                    <span class="input-group-addon"><i class="fas fa-home"></i></span>
+                                    <input  name="roomNbr" [ngModel]="roomNbr" class="form-control"  type="text" [attr.disabled]="roomNbr ? '' : null">
+                                  </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Pulse:</th>
+                                <td>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fas fa-heartbeat"></i></span>
+                                        <input  name="pulse" [ngModel]="pulse" class="form-control"  type="text" [attr.disabled]="pulse ? '' : null">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Temprature:</th>
+                                <td>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fas fa-thermometer-half"></i></span>
+                                        <input  name="temp" [ngModel]="temp" class="form-control"  type="text" [attr.disabled]="temp ? '' : null" ngModel>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>SAT:</th>
+                                <td>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fab fa-digital-ocean"></i></span>
+                                        <input  name="sat" [ngModel]="sat" class="form-control"  type="text" [attr.disabled]="sat ? '' : null" ngModel>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>RESP RATE:</th>
+                                <td>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fab fa-digital-ocean"></i></span>
+                                        <input  name="respRate" [ngModel]="respRate" class="form-control"  type="text" [attr.disabled]="respRate ? '' : null" ngModel>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>WEIGHT:</th>
+                                <td>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fas fa-weight"></i></span>
+                                        <input  name="weight" [ngModel]="weight" class="form-control"  type="text" [attr.disabled]="weight ? '' : null" ngModel>
+                                    </div>
+                                </td>
+                            </tr>
+  
+                        </tbody>
+                    </table>
+                    <br>
+                    <input type="hidden" id="encounterId" name="encounterId" [ngModel]="encounterId">
+                    <div class="form-group col-md-12 text-center">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+              </div>
+              </form>
+              </div>
+            </div>
+          </div><!--/col-->
+
+          <div class="col-sm-6" *ngIf="encounter">
+            <div class="box">
+              <div class="box-header">
+                <h2><i class="fas fa fa-user"></i>&nbsp;Patient Diagnosis</h2>
+              </div>
+              <div class="box-content">
+                <div id="generalInfo" style="height:450px" >
+                    <form role="form" (ngSubmit)="addNewDiagnosis(DiagnosisForm.value)" #DiagnosisForm="ngForm">
+                        Diagnosis history comes here...
+                    </form>
+              </div>
+              </div>
+            </div>
+          </div><!--/col-->
+    </div>
+
+    <div class="row" *ngIf="encounter">		
+        <div class="col-lg-12">
+            <div class="box">
+                <div class="box-header" data-original-title>
+                    <h2><i class="medical-icon-i-medical-records"></i><span class="break"></span>Notes</h2>
+                </div>
+                <form role="form" (ngSubmit)="addEncounterNote(encounterNoteForm.value)" #encounterNoteForm="ngForm">
+                  <div class="box-content">
+                      <div class="form-group">
+                          <label class="control-label" for="textarea2">CHIEF COMPLAINT</label>
+                          <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-comment"></i></span>
+                            <div class="controls">
+                                <textarea name="chiefComplaint" [ngModel]="chiefComplaint" rows="6" style="width:100%"></textarea>
+                            </div>
+                          </div>
+                      </div> 
+                      <div class="form-group">
+                          <label class="control-label" for="textarea2">TREATMENT</label>
+                          <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-comment"></i></span>
+                            <div class="controls">
+                                <textarea name="treatment" [ngModel]="treatment" rows="6" style="width:100%"></textarea>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label class="control-label" for="textarea2">REMARK</label>
+                          <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-comment"></i></span>
+                            <div class="controls">
+                                <textarea name="remark" [ngModel]="remark" rows="6" style="width:100%"></textarea>
+                            </div>
+                        </div>
+                      </div> 
+                      <input type="hidden" id="encounterId" name="encounterId" [ngModel]="encounterId">
+                      <div class="form-group col-md-12 text-center">
+                          <button type="submit" class="btn btn-primary">Update</button>
+                      </div>
+                      <br>
+                      <br>
+                      <br>
+                  </div>
+                </form>
+            </div>
+        </div><!--/col-->
+    
+    </div><!--/row-->
+</div>

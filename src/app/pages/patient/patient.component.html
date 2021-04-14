@@ -1,0 +1,285 @@
+<div id="content" class="col-lg-10 col-sm-11">       
+  <div class="row">
+    <div class="col-sm-6" *ngIf="patient">
+      <div class="box">
+        <div class="box-header">
+          <h2><i class="fas fa fa-user"></i>&nbsp;General Information</h2>
+        </div>
+        <div class="box-content">
+          <div id="generalInfo" style="height:300px" >
+            <table class="table table-condensed">
+                <tbody>
+                    <tr>
+                        <th>Name:</th>
+                        <td>{{patient.fname}} {{patient.lname}}</td>
+                    </tr>
+                    <tr>
+                        <th>Date of Birth:</th>
+                        <td>{{patient.dob | date: 'MM/dd/yyyy'}}</td>
+                    </tr>
+                    <tr>
+                        <th>Phone:</th>
+                        <td>{{patient.phone}}</td>
+                    </tr>
+                    <tr>
+                        <th>Email:</th>
+                        <td>{{patient.email}}</td>
+                    </tr>
+                    <tr *ngIf="patientAddresses">
+                        <th>Address:</th>
+                        <td>{{patientAddresses.street1}} {{patientAddresses.street2}}<br>{{patientAddresses.city}} {{patientAddresses.state}} {{patientAddresses.zipcode}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        </div>
+      </div>
+    </div><!--/col-->
+
+    <div class="col-sm-6">
+      <div class="box"  id="accordion"  aria-multiselectable="true">
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+                <h2 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapse">
+                            <i class="fas fas fa-id-card"></i>&nbsp;<span class="break"></span>Insurance Information
+                    </a>
+                </h2>
+            </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+              <div class="panel-body">
+                <table class="table table-condensed" *ngFor="let insurance of insurances">
+                    <tbody>
+                        <tr>
+                            <th>Insurance Name:</th>
+                            <td>{{insurance.insuranceName}}</td>
+                        </tr>
+                        <tr>
+                            <th>Insured Name:</th>
+                            <td>{{insurance.insuredName}}</td>
+                        </tr>
+                        <tr>
+                            <th>Insurance Number:</th>
+                            <td>{{insurance.insuranceNumber}}</td>
+                        </tr>
+                        <tr>
+                            <th>Group Number:</th>
+                            <td>{{insurance.groupNumber}}</td>
+                        </tr>
+                        <tr>
+                            <th>Phone:</th>
+                            <td>{{insurance. phone}}</td>
+                        </tr>
+                        <tr>
+                            <th>Address:</th>
+                            <td>{{insurance.street1}} <br>{{insurance.city}} {{insurance.state}} {{insurance.zipcode}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                      <a class="btn btn-info"  title="Edit"> <i class="fas fa-pencil-alt"></i></a> 
+                        &nbsp;
+                      <a class="btn btn-danger"  title="Discharge"> <i class="fas fa-trash-alt"></i></a>
+              </div>
+          </div>
+      </div>
+
+      <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingTwo">
+                <h2 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapse">
+                            <i class="fas fa-user-alt"></i>&nbsp;<span class="break"></span>Emergency Contact
+                    </a>
+                </h2>
+            </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+              <div class="panel-body">
+                <table class="table table-condensed" *ngFor="let emergencyContact of emergencyContacts">
+                    <tbody>
+                        <tr>
+                            <th>Name:</th>
+                            <td>{{emergencyContact.fname}} {{emergencyContact.lname}}</td>
+                        </tr>
+                        <tr>
+                            <th>Relationship:</th>
+                            <td>{{emergencyContact.relationship}}</td>
+                        </tr>
+                        <tr>
+                            <th>Cell Phone:</th>
+                            <td>{{emergencyContact.cellPhone}}</td>
+                        </tr>
+                        <tr>
+                            <th>Home Phone:</th>
+                            <td>{{emergencyContact.homePhone}}</td>
+                        </tr>
+                        <tr>
+                            <th>Address:</th>
+                            <td>{{emergencyContact.street1}} {{emergencyContact.street2}}<br>{{emergencyContact.city}} {{emergencyContact.state}} {{emergencyContact.zipcode}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                      <a class="btn btn-info"  title="Edit"> <i class="fas fa-pencil-alt"></i></a> 
+                        &nbsp;
+                      <a class="btn btn-danger"  title="Discharge"> <i class="fas fa-trash-alt"></i></a>
+              </div>
+          </div>
+      </div>
+      <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingThree">
+                    <h2 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapse">
+                                <i class="fas fa-file-invoice-dollar"></i>&nbsp;<span class="break"></span>Billing
+                        </a>
+                    </h2>
+                </div>
+            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                <div class="panel-body">
+                      Billing comes here...
+                      <br>
+                      <a class="btn btn-info"  title="Edit"> <i class="fas fa-pencil-alt"></i></a> 
+                        &nbsp;
+                      <a class="btn btn-danger"  title="Discharge"> <i class="fas fa-trash-alt"></i></a> 
+                </div>
+            </div>
+        </div>
+
+    </div><!--/col-->
+   
+  </div>
+</div>
+<div class="row" *ngIf="encounters">		
+    <div class="col-lg-12">
+        <div class="box">
+            <div class="box-header" data-original-title>
+                <h2><i class="medical-icon-i-medical-records"></i><span class="break"></span>Encounters</h2>
+            </div>
+            <div class="box-content">
+                    <table class="table table-striped table-bordered bootstrap-datatable datatable" datatable>
+                      <thead>
+                        <tr>
+                          <th>Date & Time Checked In</th>
+                          <th>Doctor Name</th>
+                          <th>Encounter Infoormation</th>
+                          <th>Status</th>
+                          <th>Actions</th>
+                        </tr>
+                      </thead>   
+                      <tbody>
+                    <tr *ngFor="let encounter of encounters">
+                        <td class="center">{{encounter.checkInDateTime | date:'medium':'America/New_York'}} </td>
+                        <td>{{encounter.employee?.fname}} {{encounter.employee?.lname}}</td>
+                        <td class="center">
+                          <i class="fas fa-thermometer-half green" *ngIf="encounter.temp" title="temprature"></i> {{encounter.temp}} &nbsp;&nbsp;
+                          <i class="fas fa-heartbeat red" *ngIf="encounter.pulse" title="pulse"></i> {{encounter.pulse}} &nbsp;&nbsp;
+                          <i class="fas fa-weight blue" *ngIf="encounter.weight" title="weight"></i> {{encounter.weight}}
+                        </td>
+                        <td class="center">
+                          <span class="label label-default" *ngIf="encounter.status == 'OPEN'">{{encounter.status}}</span>
+                          <span class="label label-success" *ngIf="encounter.status == 'IN PROGRESS'">{{encounter.status}}</span>
+                          <span class="label label-success" *ngIf="encounter.status == 'COMPLETED'">{{encounter.status}}</span>
+                        </td>
+                        <td class="center">
+                            <a class="btn btn-success" (click)="getPatientEncounterById(encounter.encounterId)"  title="view"> <i class="fa fa-search-plus"></i></a>
+            
+                        </td>
+                      </tr>
+                      </tbody>
+                    </table>     
+                  </div>
+        </div>
+    </div><!--/col-->
+
+</div><!--/row-->
+<div class="row" *ngIf="encounter">		
+    <div class="col-lg-12">
+        <div class="box">
+            <div class="box-header" data-original-title>
+                <h2><i class="medical-icon-i-medical-records"></i><span class="break"></span>{{encounter.checkInDateTime | date:'medium':'America/New_York'}}</h2>
+            </div>
+            <div class="box-content">
+                <table class="table table-condensed">
+                    <tbody>
+                        <tr>
+                            <th>Pulse:</th>
+                            <th>Temprature:</th>
+                            <th>SAT:</th>
+                            <th>RESP RATE:</th>
+                            <th>WEIGHT:</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fas fa-heartbeat"></i></span>
+                                    <input  name="pulse" value ="{{encounter.pulse}}" class="form-control"  type="text" disabled>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fas fa-thermometer-half"></i></span>
+                                    <input  name="temp" value="{{encounter.temp}}" class="form-control"  type="text" disabled>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fab fa-digital-ocean"></i></span>
+                                    <input  name="sat" value="{{encounter.sat}}" class="form-control"  type="text" disabled>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fab fa-digital-ocean"></i></span>
+                                    <input  name="respRate" value="{{encounter.respRate}}" class="form-control"  type="text" disabled>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fas fa-weight"></i></span>
+                                    <input  name="weight" value="{{encounter.weight}}" class="form-control"  type="text" disabled>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th colspan="5">CHIEF COMPLAINT</th>
+                        </tr>
+                        <tr>
+                            <td colspan="5">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-comment"></i></span>
+                                    <textarea class="form-control form-input" rows="7" name="chiefComplaint" style="width:100%;" value="{{encounter.chiefComplaint}}"
+                                      maxlength="1000" disabled></textarea>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th colspan="5">TREATMENT</th>
+                        </tr>
+                        <tr>
+                            <td colspan="5">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-comment"></i></span>
+                                    <textarea class="form-control form-input" rows="7" style="display: block; width:100%;" name="treatment" value="{{encounter.treatment}}"
+                                      maxlength="1000" disabled></textarea>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th colspan="5">REMARK</th>
+                        </tr>
+                        <tr>
+                            <td colspan="5">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-comment"></i></span>
+                                    <textarea class="form-control form-input" rows="7" style="width:100%;" name="remark" value="{{encounter.remark}}"
+                                      maxlength="1000" disabled></textarea>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div><!--/col-->
+
+</div><!--/row-->
